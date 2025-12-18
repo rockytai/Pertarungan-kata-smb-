@@ -12,7 +12,7 @@ export interface StoryLine {
   chinese: string;
   audioText: string;
   type: 'vocab' | 'sentence';
-  isName?: boolean; // To identify names like Sara to exclude from distractors if needed
+  isName?: boolean;
 }
 
 export interface StoryChapter {
@@ -21,15 +21,24 @@ export interface StoryChapter {
   content: StoryLine[];
 }
 
+export interface Achievement {
+    id: string;
+    title: string;
+    description: string;
+    icon: string;
+    condition: (player: Player) => boolean;
+}
+
 export interface Player {
   id: number;
   name: string;
   avatar: string;
-  maxUnlockedLevel: number; // Tracks Story Chapter
-  stars: Record<string, number>; // key format: "chapterId-subLevelId"
-  scores: Record<number, number>; 
+  maxUnlockedLevel: number; 
+  stars: Record<string, number>; 
+  scores: Record<string, number>; // key: "chapterId-subLevelId"
+  totalScore: number;
+  achievements: string[]; // IDs of earned achievements
   mistakes: number[];
-  // Runtime properties for versus mode
   score?: number;
   hp?: number;
   isComputer?: boolean;

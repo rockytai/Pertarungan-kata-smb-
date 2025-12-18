@@ -63,6 +63,9 @@ const VersusSetup: React.FC<VersusSetupProps> = ({ currentPlayer, onStart, onBac
                 maxUnlockedLevel: 1, 
                 stars: {},
                 scores: {},
+                // Added missing properties required by Player interface
+                totalScore: 0,
+                achievements: [],
                 mistakes: [],
                 isComputer: opponentType === 'CPU'
             },
